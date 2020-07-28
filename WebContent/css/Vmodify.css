@@ -1,0 +1,43 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+body{
+	background: #69ceff;
+}
+.cen{
+	width: 1000px;
+	height: 800px;
+	background: white;
+	margin: 50px auto;
+}
+.xuhao{
+	width: 100px;
+}
+label{
+     padding-top: 10px;
+}
+.h1{
+	width: 900px;
+	height: 60px;
+	background: transparent;
+	margin: 10px auto;
+}
+.h1 input{
+	width: 600px;
+	height: 30px;
+}
+.h2{
+	height: 60px;
+	background: transparent;
+}
+.h3{
+	margin-left: 20px;
+}
+button{
+	width: 60px;
+	height: 40px;
+	background: #09f;
+
+}

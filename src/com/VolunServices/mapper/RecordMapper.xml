@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.VolunServices.mapper.RecordMapper" >
+  <resultMap id="BaseResultMap" type="com.VolunServices.pojo.Record" >
+    <id column="reacordid" property="reacordid" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="actid" property="actid" jdbcType="INTEGER" />
+    <result column="duration" property="duration" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    reacordid, uid, actid, duration
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.VolunServices.pojo.RecordExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from record
+    where reacordid = #{reacordid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from record
+    where reacordid = #{reacordid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.VolunServices.pojo.RecordExample" >
+    delete from record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  
+  <!-- 插入 -->
+  <insert id="insert" parameterType="com.VolunServices.pojo.Record" >
+    insert into record (uid, actid, 
+      duration)
+    values (#{uid,jdbcType=INTEGER}, #{actid,jdbcType=INTEGER}, 
+      #{duration,jdbcType=REAL})
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.VolunServices.pojo.Record" >
+    insert into record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="reacordid != null" >
+        reacordid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="actid != null" >
+        actid,
+      </if>
+      <if test="duration != null" >
+        duration,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="reacordid != null" >
+        #{reacordid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="actid != null" >
+        #{actid,jdbcType=INTEGER},
+      </if>
+      <if test="duration != null" >
+        #{duration,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.VolunServices.pojo.RecordExample" resultType="java.lang.Integer" >
+    select count(*) from record
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update record
+    <set >
+      <if test="record.reacordid != null" >
+        reacordid = #{record.reacordid,jdbcType=INTEGER},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.actid != null" >
+        actid = #{record.actid,jdbcType=INTEGER},
+      </if>
+      <if test="record.duration != null" >
+        duration = #{record.duration,jdbcType=REAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update record
+    set reacordid = #{record.reacordid,jdbcType=INTEGER},
+      uid = #{record.uid,jdbcType=INTEGER},
+      actid = #{record.actid,jdbcType=INTEGER},
+      duration = #{record.duration,jdbcType=REAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.VolunServices.pojo.Record" >
+    update record
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="actid != null" >
+        actid = #{actid,jdbcType=INTEGER},
+      </if>
+      <if test="duration != null" >
+        duration = #{duration,jdbcType=REAL},
+      </if>
+    </set>
+    where reacordid = #{reacordid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.VolunServices.pojo.Record" >
+    update record
+    set uid = #{uid,jdbcType=INTEGER},
+      actid = #{actid,jdbcType=INTEGER},
+      duration = #{duration,jdbcType=REAL}
+    where reacordid = #{reacordid,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 查找全部 -->
+  <select id="selectAllRec" resultType="com.VolunServices.pojo.Record">
+    select * from record
+  </select>
+  
+  <!-- 根据活动Id查找 -->
+  <select id="selectByActId" parameterType="int" resultType="com.VolunServices.pojo.Record">
+    select * from record
+    where actid = #{actid,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 根据用户Id查找 -->
+  <select id="selectByUsId" parameterType="int" resultType="com.VolunServices.pojo.Record">
+    select * from record
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 根据活动时长查找 -->
+  <select id="selectByDua" parameterType="float" resultType="com.VolunServices.pojo.Record">
+   select * from record
+   where duration = #{duration,jdbcType=REAL} or duration > #{duration,jdbcType=REAL}
+  </select>
+  
+  <select id="countDuration" parameterType="int" resultType="Float">
+     select sum(duration) from record
+     where uid = #{uid,jdbcType=INTEGER}
+  </select>
+  
+  <!-- 根据活动id修改关于该活动的所有活动 -->
+  <update id="updateActInfoByActId" parameterType="int" >
+    update record
+    set uid = #{uid,jdbcType=INTEGER},
+      duration = #{duration,jdbcType=REAL}
+    where actid = #{actid,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 批量删除 -->
+<delete id="deleteSelectRecord" parameterType="String">
+        delete from record where reacordid in (${_parameter})
+</delete>
+
+<!-- 计算个人总服务小时 -->
+<select id="totaltime" parameterType="int" resultType="Float">
+   select sum(duration) from record
+   where uid = #{uid,jdbcType=INTEGER}
+</select>
+
+<!-- 查找个人服务记录的前1条 -->
+  <select id="selRecordByuidFour" parameterType="int" resultType="com.VolunServices.pojo.Record">
+     select * from record
+     where  uid = #{uid,jdbcType=INTEGER} limit 1
+  </select>
+
+  
+</mapper>

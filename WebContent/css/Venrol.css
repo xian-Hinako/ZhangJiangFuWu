@@ -1,0 +1,88 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+}
+body{
+	background: #69ceff;
+}
+.top{
+	width: 750px;
+	height: 600px;
+	background: transparent;
+	margin: 100px auto;
+	position: relative;
+}
+
+.top img{
+	padding-top: 200px;
+	border-radius: 25px 25px 25px 25px;
+}
+
+.top .right{
+	width: 400px;
+	height: 600px;
+	background: rgba(255, 165, 0, 0.2);
+	float: right;
+}
+.top .tit{
+	width: 100px;
+	line-height: 30px;
+	background: transparent;
+	color: blue;
+	font-weight: border;
+	padding-left: 10px;
+}
+.top .right .tel{
+	width: 300px;
+	height: 40px;
+	background: white;
+    margin: 20px 50px 0px 50px;
+}
+.top .right .code,.top .right .pho,.top .right .passw,.top .right .password,.top .right .name{
+	width: 300px;
+	height: 40px;
+	background: white;
+	margin: 20px 50px 0px 50px;
+}
+.top .right ul{
+	margin-top: 20px;
+}
+.top .right li{
+	float: left;
+	padding-left: 50px;
+	font-size: 14px;
+}
+.top .right .sed{
+	padding-top: 30px;
+}
+.top .right .enr{
+	width: 300px;
+	line-height: 35px;
+	background: #00a2ff;
+	margin: 50px auto;
+	text-align: center;
+	color: white;
+	cursor: pointer;
+}
+#tel,#code,#pho,#passw,#password,#name{
+	font-size: 20px;
+	line-height: 40px;
+	margin-left: 10px;
+}
+.top .right .tel input,.top .right .code input,.top .right .passw input,.top .right .password input,.top .right .name input{
+	height: 40px;
+	width: 260px;
+	float: right;
+	outline-style: none;
+	border-style: none;
+}
+.top .right .pho input{
+	outline-style: none;
+	border-style: none;
+}
+.top .right .pho .get{
+	font-size: 14px;
+	color: #5dceff;
+	cursor: pointer;
+}

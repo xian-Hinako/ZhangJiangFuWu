@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.VolunServices.mapper.UserinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.VolunServices.pojo.Userinfo" >
+    <id column="uIid" property="uiid" jdbcType="INTEGER" />
+    <result column="uIname" property="uiname" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="aladdress" property="aladdress" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.VolunServices.pojo.Userinfo" extends="BaseResultMap" >
+    <result column="picture" property="picture" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    uIid, uIname, sex, birthday, aladdress, tel
+  </sql>
+  <sql id="Blob_Column_List" >
+    picture
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.VolunServices.pojo.UserinfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from userinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.VolunServices.pojo.UserinfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from userinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from userinfo
+    where uIid = #{uiid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from userinfo
+    where uIid = #{uiid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.VolunServices.pojo.UserinfoExample" >
+    delete from userinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  
+  <!-- 注册user插入 -->
+  <insert id="insert1" parameterType="com.VolunServices.pojo.Userinfo" >
+    insert into userinfo (uIid)
+    values (#{uiid,jdbcType=INTEGER}
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.VolunServices.pojo.Userinfo" >
+    insert into userinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uiid != null" >
+        uIid,
+      </if>
+      <if test="uiname != null" >
+        uIname,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="aladdress != null" >
+        aladdress,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="picture != null" >
+        picture,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uiid != null" >
+        #{uiid,jdbcType=INTEGER},
+      </if>
+      <if test="uiname != null" >
+        #{uiname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="aladdress != null" >
+        #{aladdress,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null" >
+        #{picture,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.VolunServices.pojo.UserinfoExample" resultType="java.lang.Integer" >
+    select count(*) from userinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update userinfo
+    <set >
+      <if test="record.uiid != null" >
+        uIid = #{record.uiid,jdbcType=INTEGER},
+      </if>
+      <if test="record.uiname != null" >
+        uIname = #{record.uiname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        sex = #{record.sex,jdbcType=INTEGER},
+      </if>
+      <if test="record.birthday != null" >
+        birthday = #{record.birthday,jdbcType=DATE},
+      </if>
+      <if test="record.aladdress != null" >
+        aladdress = #{record.aladdress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tel != null" >
+        tel = #{record.tel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.picture != null" >
+        picture = #{record.picture,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update userinfo
+    set uIid = #{record.uiid,jdbcType=INTEGER},
+      uIname = #{record.uiname,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=INTEGER},
+      birthday = #{record.birthday,jdbcType=DATE},
+      aladdress = #{record.aladdress,jdbcType=VARCHAR},
+      tel = #{record.tel,jdbcType=VARCHAR},
+      picture = #{record.picture,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update userinfo
+    set uIid = #{record.uiid,jdbcType=INTEGER},
+      uIname = #{record.uiname,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=INTEGER},
+      birthday = #{record.birthday,jdbcType=DATE},
+      aladdress = #{record.aladdress,jdbcType=VARCHAR},
+      tel = #{record.tel,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.VolunServices.pojo.Userinfo" >
+    update userinfo
+    <set >
+      <if test="uiname != null" >
+        uIname = #{uiname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="aladdress != null" >
+        aladdress = #{aladdress,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null" >
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uIid = #{uiid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.VolunServices.pojo.Userinfo" >
+    update userinfo
+    set uIname = #{uiname,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      birthday = #{birthday,jdbcType=DATE},
+      aladdress = #{aladdress,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      picture = #{picture,jdbcType=VARCHAR}
+    where uIid = #{uiid,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateByPrimaryKey" parameterType="com.VolunServices.pojo.Userinfo" >
+    update userinfo
+    set uIname = #{uiname,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=INTEGER},
+      birthday = #{birthday,jdbcType=DATE},
+      aladdress = #{aladdress,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      picture = #{picture,jdbcType=VARCHAR}
+    where uIid = #{uiid,jdbcType=INTEGER}
+    
+  </update>
+  
+  <!-- 查找全部 -->
+  <select id="sellectAllUsIn" resultType="com.VolunServices.pojo.Userinfo">
+    select * from userinfo
+  </select>
+  
+  <!-- 根据名字查找 -->
+  <select id="sellectusInByName" parameterType="String" resultType="com.VolunServices.pojo.Userinfo">
+    select * from userinfo
+    where uIname = #{uiname,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 管理员注册 -->
+   <insert id="insertmanager" parameterType="com.VolunServices.pojo.Userinfo" >
+    insert into userinfo (uIid,uIname,sex,birthday,aladdress,tel)
+    values (#{uiid,jdbcType=INTEGER},#{uiname,jdbcType=VARCHAR},#{sex,jdbcType=INTEGER},#{birthday,jdbcType=DATE}, #{aladdress,jdbcType=VARCHAR},#{tel,jdbcType=VARCHAR})
+  </insert>
+  
+    <!-- 批量删除 -->
+<delete id="deleteSelectUserIn" parameterType="String">
+        delete from userinfo where uIid in (${_parameter})
+</delete>
+
+<!-- 插入 -->
+  <insert id="insert" parameterType="com.VolunServices.pojo.Userinfo" >
+    insert into userinfo (uIid,tel)
+    values (#{uiid,jdbcType=INTEGER},#{tel,jdbcType=VARCHAR})
+  </insert>
+  
+<!-- 重置密码 -->
+  <sql id="loginList">       
+  		SELECT *        
+  		FROM userinfo        
+  		WHERE uIname=#{uiname,jdbcType=VARCHAR}              
+  		and tel=#{tel,jdbcType=VARCHAR};    
+  </sql>
+  <select id="loginList" resultType="com.VolunServices.pojo.Userinfo" parameterType="com.VolunServices.pojo.Userinfo">
+        <include refid="loginList"/>
+    </select>
+    
+</mapper>

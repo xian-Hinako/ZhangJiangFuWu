@@ -1,0 +1,35 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	box-sizing: border-box;	
+}
+body{
+	background: #69ceff;
+}
+*:focus{ outline:none;}
+.tsm{ background:#333; 
+	font-size:13px; 
+	color:#fff; 
+	margin:20px; 
+	margin-top:0px; 
+	padding:12px; 
+	line-height:25px;
+}
+.tsm .p2{ 
+	margin-top:12px;
+}
+.btns{ 
+	padding:20px;
+}
+.btns div{ 
+	display:block; 
+	text-align:center;
+	cursor:pointer;
+    padding:10px;
+    border-radius:5px; 
+    background: #0096ff;
+    color:#fff; 
+    margin-bottom:12px; 
+    width:50px;
+}

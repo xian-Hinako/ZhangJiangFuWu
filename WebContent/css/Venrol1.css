@@ -1,0 +1,177 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+}
+body{
+	background: #69ceff;
+}
+.cen{
+	width: 1000px;
+	height: 2100px;
+	background: white;
+	margin: 50px auto;
+}
+.cen h5{
+	padding-left: 50px;
+	padding-top: 30px;
+	font-weight: none;
+	color: #007eff;
+}
+.cen .top{
+	width: 850px;
+	height: 270px;	
+	background: transparent;
+	margin: 30px auto;
+}
+.cen .top .t-fir,.cen .top .t-sec,.cen .top .t-thr,.cen .top .t-fou,.cen .top .t-fiv,.cen .banner .b-fir,.cen .banner .b-sec,.cen .banner .b-thr,.cen .banner .b-fou,.cen .banner .b-fiv,.cen .nav .n-fir,.cen .nav .n-sec,.cen .nav .n-thr,.cen .nav .n-fou,.cen .botoom div{
+	width: 850px;
+	height: 35px;
+	background: transparent;
+	margin-bottom: 20px;
+}
+.cen .top .s-fir,.cen .top .s-sec,.cen .top .s-thr,.cen .top .s-fou,.cen .top .s-fiv,.cen .banner .s-fir,.cen .banner .s-sec,.cen .banner .s-thr,.cen .banner .s-fou,.cen .banner .s-fiv,.cen .nav span,.cen .botoom span{
+	position: relative;
+	padding-left: 25px;
+	line-height: 35px;
+	width: 120px;
+}
+.cen .top .s-fir .em,.cen .top .s-sec .em,.cen .top .s-thr .em,.cen .top .s-fou .em,.cen .top .s-fiv .em,.cen .banner .s-fir .em,.cen .banner .s-sec .em,.cen .banner .s-thr .em,.cen .banner .s-fou .em,.cen .banner .s-fiv .em,.cen .nav em,.cen .botoom em,.cen .ser em{
+	position: absolute;
+	left: 0;
+	width: 16px;
+	height: 100%;
+	color: #da4453;
+}
+.cen .top input,.cen .banner input,.cen .nav input{
+	width: 275px;
+	line-height: 35px;
+    outline: none;
+    border-style: none;
+    float: right;
+    margin-right: 430px;
+    border: 1px solid #ccc;
+}
+.cen .banner{
+	width: 850px;
+	height: 270px;
+	background: transparent;
+    margin: 30px auto;
+}
+.cen .nav{
+	width: 850px;
+	height: 370px;
+	background: transparent;
+	margin: 30px auto;
+}
+.cen .nav .n-thr select{
+	width: 100px;
+	padding-left: 20px;
+	height: 35px;
+	margin-left: 12px;
+	background: transparent;
+	border: 1px solid #ccc;
+}
+.cen .nav .n-fiv{
+	width: 850px;
+	height: 130px;
+	background: transparent;
+	margin-bottom: 20px;
+}
+.cen .nav textarea{
+	width: 270px;
+	height: 130px;
+	background: transparent;
+	float: right;
+	margin-right: 430px; 
+}
+.cen .nav .n-fiv p{
+	position: relative;
+	width: 125px;
+	line-height: 35px;
+	float: left;
+	padding-left: 20px;
+}
+.cen .botoom{
+	width: 850px;
+	height: 280px;
+	background: transparent;
+	margin: 30px auto;
+}
+.cen .botoom select{
+	width: 275px;
+	height: 35px;
+}
+.cen .botoom input{
+	width: 275px;
+	line-height: 35px;
+    outline: none;
+    border-style: none;
+    float: right;
+    margin-right: 400px;
+    border: 1px solid #ccc;
+}
+.cen .botoom select{
+	width: 275px;
+	line-height: 35px;
+	margin-left: 45px;
+}
+.cen .ser{
+	width: 850px;
+	height: 200px;
+	background: transparent;
+	margin: 30px auto;
+	border-bottom: 1px solid #ccc;
+}
+.cen .ser .s-fir,.cen .ser .s-sec{
+	position: relative;
+	padding-left: 25px;
+	height: 50px;
+	width: 80px;
+	display: inline-block;
+	float: left;
+}
+.cen .ser label{
+	display: inline-block;
+	font-size: 14px;
+	color: #369;
+	padding-left: 20px;
+	padding-bottom: 20px;
+}
+.cen .ser .ser-fir{
+	width: 650px;
+	float: right;
+	height: 50px;
+	margin-right: 90px;
+	background: transparent;
+}
+.cen .ser .ser-sec{
+	width: 650px;
+	float: right;
+	height: 120px;
+	margin-right: 90px;
+	background: transparent;
+}
+.cen .sub{
+	width: 620px;
+	height: 100px;
+	background: transparent;
+	margin: 30px auto;
+}
+.cen .sub .read{
+	width: 620px;
+	height: 30px;
+	background: transparent;
+}
+.cen .read .reading{
+	padding-right: 20px;
+	font-size: 14px;
+}
+.cen .sub .reg{
+	width: 100px;
+	line-height: 30px;
+    background: #39f;
+    text-align: center;
+    cursor: pointer;
+    margin-left: 40px;
+}

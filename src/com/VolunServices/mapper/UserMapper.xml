@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.VolunServices.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.VolunServices.pojo.User" >
+    <id column="uid" property="uid" jdbcType="INTEGER" />
+    <result column="uname" property="uname" jdbcType="VARCHAR" />
+    <result column="upassword" property="upassword" jdbcType="VARCHAR" />
+    <result column="identity" property="identity" jdbcType="INTEGER" />
+    <result column="nowaddress" property="nowaddress" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    uid, uname, upassword, identity, nowaddress
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.VolunServices.pojo.UserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where uid = #{uid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user
+    where uid = #{uid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.VolunServices.pojo.UserExample" >
+    delete from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.VolunServices.pojo.User" >
+    insert into user (uname,upassword,identity,nowaddress)
+    values (#{uname,jdbcType=VARCHAR},#{upassword,jdbcType=VARCHAR},#{identity,jdbcType=VARCHAR},#{nowaddress,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.VolunServices.pojo.User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="uname != null" >
+        uname,
+      </if>
+      <if test="upassword != null" >
+        upassword,
+      </if>
+      <if test="identity != null" >
+        identity,
+      </if>
+      <if test="nowaddress != null" >
+        nowaddress,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="uname != null" >
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="upassword != null" >
+        #{upassword,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null" >
+        #{identity,jdbcType=INTEGER},
+      </if>
+      <if test="nowaddress != null" >
+        #{nowaddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.VolunServices.pojo.UserExample" resultType="java.lang.Integer" >
+    select count(*) from user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update user
+    <set >
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=INTEGER},
+      </if>
+      <if test="record.uname != null" >
+        uname = #{record.uname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.upassword != null" >
+        upassword = #{record.upassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.identity != null" >
+        identity = #{record.identity,jdbcType=INTEGER},
+      </if>
+      <if test="record.nowaddress != null" >
+        nowaddress = #{record.nowaddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update user
+    set uid = #{record.uid,jdbcType=INTEGER},
+      uname = #{record.uname,jdbcType=VARCHAR},
+      upassword = #{record.upassword,jdbcType=VARCHAR},
+      identity = #{record.identity,jdbcType=INTEGER},
+      nowaddress = #{record.nowaddress,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.VolunServices.pojo.User" >
+    update user
+    <set >
+      <if test="uname != null" >
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="upassword != null" >
+        upassword = #{upassword,jdbcType=VARCHAR},
+      </if>
+      <if test="identity != null" >
+        identity = #{identity,jdbcType=INTEGER},
+      </if>
+      <if test="nowaddress != null" >
+        nowaddress = #{nowaddress,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=INTEGER}
+  </update>
+
+     <!-- 修改密码 -->
+  <update id="updateByPrimaryKey">
+    update user SET
+	<if test="upassword!=null">
+		upassword=#{upassword}
+	</if>
+		WHERE uid=#{uid}
+  </update>
+  
+  <!-- 检查旧密码 -->
+  <select id="checkoldPassword" parameterType="int" resultType="String">
+     select upassword from user
+     where uid=#{uid}
+  </select>
+  
+<!-- 登录: -->
+   <select id="loginByname" parameterType="com.VolunServices.pojo.User" resultType="com.VolunServices.pojo.User">
+ <!--  select * from user where uname=#{uname} and upassword=#{upassword} -->
+     select * from user
+        <where>
+			<if test="uname != null and uname != ''">
+				and `uname` = #{uname}
+			</if>
+			<if test="upassword != null and upassword != ''">
+				and `upassword` = #{upassword}
+			</if>
+		</where> 
+  </select>
+  
+  <!--查找全部 -->
+  <select id="selectAll" resultType="com.VolunServices.pojo.User">
+    select * from user
+  </select>
+  
+    <select id="countselectByName" parameterType="String" resultType="int">
+    select count(uid) from user where uname=#{uname}
+  </select>
+  
+      <select id="selectByNameReId" parameterType="String" resultType="int">
+    select uid from user where uname=#{uname}
+  </select>
+  
+  <!-- 查询管理员 -->
+  <select id="selectIdentity" parameterType="int" resultType="com.VolunServices.pojo.User">
+    select * from user 
+    where identity = #{identity,jdbcType=INTEGER}
+  </select>
+  
+  <sql id="loginList">       
+  		SELECT *        
+  		FROM user        
+  		WHERE uname=#{uname,jdbcType=VARCHAR}              
+  		and phone=#{phone,jdbcType=VARCHAR};    
+  </sql>
+  
+   <select id="loginList" resultType="com.VolunServices.pojo.User">
+        <include refid="loginList"/>
+    </select>
+  
+  <!-- 审核管理员 -->
+  <update id="ManagerPass" parameterType="com.VolunServices.pojo.User">
+     update user set identity = #{identity,jdbcType=INTEGER}
+     where uid=#{uid}
+  </update>
+  
+  <!-- 密码重置 -->
+  <select id="selectByName" parameterType="String" resultType="com.VolunServices.pojo.User">
+    select * from user where uname=#{uname}
+  </select>
+  
+  <update id="updateByUname">
+    update user SET
+	<if test="upassword!=null">
+		upassword=#{upassword}
+	</if>
+		WHERE uname = #{uname}
+  </update>
+  <!-- 密码重置end -->
+  
+  
+</mapper>

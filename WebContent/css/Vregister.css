@@ -1,0 +1,144 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+}
+body
+{
+	background-color:#69ceff;
+	}
+
+.logo{
+	width: 134px;
+	height: 129px;
+	margin: 50px auto 20px;
+    background: url(../images/logo1.png) no-repeat;
+}
+.titlename{
+	width: 280px;
+	height: 40px;
+	margin: 30px auto;
+	background: transparent;
+	color: white;
+	font-size: 28px;
+	font-family: "方正小标宋",Times,serif;
+}
+.log-input{
+	width: 300px;
+    height: 230px;
+    background: transparent;
+    margin: 50px auto;
+}
+.log-input .user{
+	width: 300px;
+	height: 39px;
+	border: 2px solid;
+	border-radius: 10px;
+    border-color: #18a2ff;
+    background-color: #48aeff63;
+}
+.log-input .passw{
+	width: 300px;
+	height: 39px;
+	margin-top: 30px;
+	border: 2px solid;
+	border-radius: 10px;
+    border-color: #18a2ff;
+
+background-color: #48aeff63;
+}
+.log-input input{
+	width: 260px;
+    height: 39px;
+    outline-style: none;
+    border-style: none;
+    font-size: 15px;
+    float: right;
+    background: transparent;
+    color: white;
+    display: block;
+}
+#user{
+	width: 25px;
+	height: 25px;
+	float: left;
+	padding-left: 10px;
+	padding-top: 10px;
+	font-size: 20px;
+}
+#passw{
+	width: 25px;
+	height: 25px;
+	float: left;
+	padding-left: 10px;
+	padding-top: 10px;
+	font-size: 16px;
+}
+.log-input .reme{
+	width: 300px;
+	height: 20px;
+	margin-top: 10px;
+	background: transparent;
+}
+.log-input .reme .rem{
+	width: 16px;
+	height: 16px;
+	float: left;
+	margin-top: 6px;
+}
+.log-input .reme .re{
+	font-size: 15px;
+	color: #c9ffff;
+}
+.log-input .reme .forg{
+	float: right;
+	color: #1866ff;
+}
+.log-input .regi{
+	width: 300px;
+	height: 40px;
+	background:#1866ff;
+	margin-top: 30px; 
+	cursor: pointer;
+}
+.log-input .regi .regis{
+	padding-left: 100px;
+	color: white;
+	font-weight: bolder;
+	font-size: 17px;
+	line-height: 40px;
+}
+.log-input .regi .regist{
+	padding-left: 50px;
+	color: white;
+	font-weight: bolder;
+	font-size: 17px;
+	line-height: 40px;
+}
+.log-input .enrol{
+	width: 300px;
+	height: 35px;
+	margin-top: 20px;
+	background: #00a2ff;
+	color: #666657;
+}
+.enrol p{
+	padding-left: 40px;
+	line-height: 35px;
+}
+.enrol p a{
+	padding-left: 20px;
+    color: blue;
+}
+.footer{
+	width: 600px;
+	height: 100px;
+	background: transparent;
+	margin: 100px auto;
+}
+.footer p span{
+	color: #007eff;
+	font-size: 12px;
+	padding-right: 30px;
+	padding-left: 20px;
+}

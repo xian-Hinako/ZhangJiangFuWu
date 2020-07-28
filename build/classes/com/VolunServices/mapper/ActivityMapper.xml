@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.VolunServices.mapper.ActivityMapper" >
+  <resultMap id="BaseResultMap" type="com.VolunServices.pojo.Activity" >
+    <id column="aid" property="aid" jdbcType="INTEGER" />
+    <result column="aname" property="aname" jdbcType="VARCHAR" />
+    <result column="actaddress" property="actaddress" jdbcType="VARCHAR" />
+    <result column="day" property="day" jdbcType="DATE" />
+    <result column="duration" property="duration" jdbcType="REAL" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    aid, aname, introduce, actaddress, day, duration, number, status, remark
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.VolunServices.pojo.ActivityExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from activity
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from activity
+    where aid = #{aid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from activity
+    where aid = #{aid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.VolunServices.pojo.ActivityExample" >
+    delete from activity
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  
+  <!-- 插入 -->
+  <insert id="insert" parameterType="com.VolunServices.pojo.Activity" >
+    insert into activity (aname, introduce, actaddress, 
+      day, duration, number, status, 
+      remark)
+    values (#{aname,jdbcType=VARCHAR}, #{introduce,jdbcType=VARCHAR},#{actaddress,jdbcType=VARCHAR}, 
+      #{day,jdbcType=DATE}, #{duration,jdbcType=REAL}, #{number,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  
+  <insert id="insertSelective" parameterType="com.VolunServices.pojo.Activity" >
+    insert into activity
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="aname != null" >
+        aname,
+      </if>
+        <if test="introduce != null" >
+        introduce,
+      </if>
+      <if test="actaddress != null" >
+        actaddress,
+      </if>
+      <if test="day != null" >
+        day,
+      </if>
+      <if test="duration != null" >
+        duration,
+      </if>
+      <if test="number != null" >
+        number,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        #{aid,jdbcType=INTEGER},
+      </if>
+      <if test="aname != null" >
+        #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null" >
+        #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="actaddress != null" >
+        #{actaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="day != null" >
+        #{day,jdbcType=DATE},
+      </if>
+      <if test="duration != null" >
+        #{duration,jdbcType=REAL},
+      </if>
+      <if test="number != null" >
+        #{number,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.VolunServices.pojo.ActivityExample" resultType="java.lang.Integer" >
+    select count(*) from activity
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update activity
+    <set >
+      <if test="record.aid != null" >
+        aid = #{record.aid,jdbcType=INTEGER},
+      </if>
+      <if test="record.aname != null" >
+        aname = #{record.aname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.introduce != null" >
+        introduce = #{record.introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="record.actaddress != null" >
+        actaddress = #{record.actaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.day != null" >
+        day = #{record.day,jdbcType=DATE},
+      </if>
+      <if test="record.duration != null" >
+        duration = #{record.duration,jdbcType=REAL},
+      </if>
+      <if test="record.number != null" >
+        number = #{record.number,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update activity
+    set aid = #{record.aid,jdbcType=INTEGER},
+      aname = #{record.aname,jdbcType=VARCHAR},
+      introduce = #{record.introduce,jdbcType=VARCHAR}
+      actaddress = #{record.actaddress,jdbcType=VARCHAR},
+      day = #{record.day,jdbcType=DATE},
+      duration = #{record.duration,jdbcType=REAL},
+      number = #{record.number,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      remark = #{record.remark,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.VolunServices.pojo.Activity" >
+    update activity
+    <set >
+      <if test="aname != null" >
+        aname = #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null" >
+        introduce = #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="actaddress != null" >
+        actaddress = #{actaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="day != null" >
+        day = #{day,jdbcType=DATE},
+      </if>
+      <if test="duration != null" >
+        duration = #{duration,jdbcType=REAL},
+      </if>
+      <if test="number != null" >
+        number = #{number,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.VolunServices.pojo.Activity" >
+    update activity
+    set aname = #{aname,jdbcType=VARCHAR},
+    introduce = #{introduce,jdbcType=VARCHAR},
+      actaddress = #{actaddress,jdbcType=VARCHAR},
+      day = #{day,jdbcType=DATE},
+      duration = #{duration,jdbcType=REAL},
+      number = #{number,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where aid = #{aid,jdbcType=INTEGER}
+  </update>
+  
+  <!-- 查找全部 -->
+  <select id="sellectAll" resultType="com.VolunServices.pojo.Activity">
+    select * from activity
+       <if test="start!=null and count!=null">
+                    limit #{start},#{count}
+            </if>
+  </select>
+  
+    <!-- 查找单个活动 -->
+  <select id="sellectByName" parameterType="String" resultType="com.VolunServices.pojo.Activity">
+    select * from activity where aname like CONCAT(CONCAT('%',#{keyword}),'%')
+  </select>
+  
+  <!-- 批量删除 -->
+  <delete id="deleteSelectActivity" parameterType="String">
+     delete from activity where aid in (${_parameter})
+  </delete>
+  
+  <!-- 分页start -->
+  <select id="list" resultType="com.VolunServices.pojo.Activity">
+            select * from   activity     
+            <if test="start!=null and count!=null">
+                    limit #{start},#{count}
+            </if>
+        </select>
+  
+  	<!-- 查询用户记录总数 -->
+	<select id="selectCount" resultType="int">
+		select count(*) from activity
+	</select>
+  <!-- 分页end -->
+  
+  
+  <!-- 查询表中前9条记录 -->
+  <select id="selectPreNice" resultType="com.VolunServices.pojo.Activity">
+   <!--  select top 9 * from activity order by aid desc  --> 
+    select * from activity order by aid desc limit 9
+  </select>  
+   
+</mapper>
